@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "404539398163",
+    "firebase_url": "https://spylocation-b7080.firebaseio.com",
+    "project_id": "spylocation-b7080",
+    "storage_bucket": "spylocation-b7080.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:404539398163:android:034e7046d69f90b1",
+        "android_client_info": {
+          "package_name": "xyz.yoav.spylocation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "404539398163-t0b7clhcndjkdcj0r1o8uinj94n3chh6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBU5Qmz4Dz7l0P6HZptn_AeU1qAgJDaFgU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

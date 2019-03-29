@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">SpyLocation</string>
+
+    <!-- Main Activity -->
+    <string name="text_display_name">Display Name</string>
+    <string name="text_display_placeholder">Display Name</string>
+    <string name="btn_crate_game">Create new game</string>
+    <string name="btn_join_game">Join game</string>
+</resources>
