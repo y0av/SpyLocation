@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class JoinGameActivity extends AppCompatActivity {
 
     ArrayList<OpenGame> openGames;
+    CloudFirestoreHelper cloudFirestoreHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,9 +19,12 @@ public class JoinGameActivity extends AppCompatActivity {
 
         RecyclerView rvOpenGames = findViewById(R.id.rvGames);
 
-        openGames = OpenGame.createGamesList();
-        GamesViewAdapter adapter = new GamesViewAdapter(openGames);
-        rvOpenGames.setAdapter(adapter);
+        cloudFirestoreHelper = new CloudFirestoreHelper(this);
+        cloudFirestoreHelper.setOnDataLoadedListener(openGames -> {
+            GamesViewAdapter adapter = new GamesViewAdapter(openGames);
+            rvOpenGames.setAdapter(adapter);
+        });
+        cloudFirestoreHelper.refreshAllOpenGames();
         rvOpenGames.setLayoutManager(new LinearLayoutManager(this));
     }
 }
