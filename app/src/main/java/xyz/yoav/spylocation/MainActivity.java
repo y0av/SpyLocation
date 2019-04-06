@@ -30,16 +30,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createNewGame() {
-        String displayName = displayNameText.getText().toString();
-        if (isVailudDisplayName(displayName)) {
-            cloudFirestoreHelper.CreateNewGame(displayName);
-            spHelper.setDisplayName(displayName);
+        Player creator = new Player(displayNameText.getText().toString());
+        GameManager.setPlayer(creator, true);
+        if (isVailudDisplayName(creator.displayName)) {
+            cloudFirestoreHelper.CreateNewGame(creator);
+            spHelper.setDisplayName(creator.displayName);
             //Intent i = new Intent(getApplicationContext(), .class);
             //startActivity(i);
         }
     }
     public void joinGame() {
+        Player player = new Player(displayNameText.getText().toString());
+        GameManager.setPlayer(player, false);
         if (isVailudDisplayName(displayNameText.getText().toString())) {
+            spHelper.setDisplayName(player.displayName);
             Intent i = new Intent(getApplicationContext(), JoinGameActivity.class);
             startActivity(i);
         }

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class JoinGameActivity extends AppCompatActivity {
 
-    ArrayList<OpenGame> openGames;
+    public static ArrayList<OpenGame> openGames;
     CloudFirestoreHelper cloudFirestoreHelper;
 
     @Override
