@@ -10,13 +10,14 @@ public class OpenGame {
     public List<Player> players;
 
     public OpenGame(String name) {
-
         gameName = name;
+        players = new ArrayList<>();
     }
 
     public OpenGame(String hashId ,String name) {
         this.hashId = hashId;
         gameName = name;
+        players = new ArrayList<>();
     }
 
     public String getName() {

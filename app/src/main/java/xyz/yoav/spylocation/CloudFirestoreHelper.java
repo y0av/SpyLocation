@@ -1,6 +1,7 @@
 package xyz.yoav.spylocation;
 
 import android.content.Context;
+import android.os.Debug;
 import android.util.Log;
 
 import com.google.firebase.Timestamp;
@@ -21,6 +22,7 @@ class CloudFirestoreHelper {
     private Context context;
 
     private openGamesListener mGamesListener;
+    private currentGamePlayersListener mGamesPlayersListener;
 
     public CloudFirestoreHelper(Context context) {
         this.context = context;
@@ -54,15 +56,20 @@ class CloudFirestoreHelper {
         }
     }
 
-    public void refreshGamePlayersList(OpenGame game) {
-        CollectionReference playersRef = dbRef.document(game.hashId).collection("players");
+    public void refreshGamePlayersList() {
+        CollectionReference playersRef = dbRef.document(GameManager.currentGame.hashId).collection("players");
         playersRef.get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
+                        
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             Player player = new Player(document.getId(), document.get("display_name").toString());
-                            game.players.add(player);
+                            //if (GameManager.currentGame==null)
+                               // Log.e(TAG,"###nulllll");
+                            GameManager.currentGame.players.add(player);
                         }
+                        if (mGamesPlayersListener != null)
+                            mGamesPlayersListener.onDataLoaded(new ArrayList<>(GameManager.currentGame.players));
                     }
                 });
     }
@@ -104,9 +111,13 @@ class CloudFirestoreHelper {
     public interface openGamesListener {
         public void onDataLoaded(ArrayList<OpenGame> openGames);
     }
+    public interface currentGamePlayersListener {
+        public void onDataLoaded(ArrayList<Player> players);
+    }
 
     public void setOnDataLoadedListener(openGamesListener listener) {
         mGamesListener = listener;
     }
+    public void setOnPlayersDataLoadedListener(currentGamePlayersListener listener) { mGamesPlayersListener = listener; }
 
 }

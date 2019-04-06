@@ -6,4 +6,14 @@
     <string name="text_display_placeholder">Display Name</string>
     <string name="btn_crate_game">Create new game</string>
     <string name="btn_join_game">Join game</string>
+
+    <string name="text_players_title">Players:</string>
+    <string name="text_locations_title">Locations:</string>
+    <string name="btn_randomize_locations">Load random locations</string>
+    <string name="btn_clear_locations">Clear Locations</string>
+    <string name="btn_start_game">Start Game</string>
+    <string name="text_duration">Duration</string>
+    <string name="text_minutes">Minutes</string>
+    <string name="btn_add_lcoation">Add</string>
+    <string name="et_add_location">Custom Location</string>
 </resources>
